@@ -1,13 +1,13 @@
 import os
 from typing import Optional
 
+from app.service.Expense import Expense
 from dotenv import dotenv_values, load_dotenv
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_core.utils.function_calling import convert_to_openai_tool
 from langchain_mistralai import ChatMistralAI
 from langchain_openai import ChatOpenAI
-from service.Expense import Expense
 
 
 class LLMService:
