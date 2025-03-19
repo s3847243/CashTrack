@@ -7,6 +7,7 @@ import org.example.model.UserInfoDto;
 
 import java.util.Map;
 
+
 public class UserInfoSerializer implements Serializer<UserInfoEvent>
 {
     @Override

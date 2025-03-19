@@ -34,8 +34,11 @@ public class UserDetailsServiceImpl implements UserDetailsService
 
     @Autowired
     private final PasswordEncoder passwordEncoder;
+
     @Autowired
     private final UserInfoProducer userInfoProducer;
+
+
     private static final Logger log = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
     @Override
@@ -56,20 +59,21 @@ public class UserDetailsServiceImpl implements UserDetailsService
         return userRepository.findByUsername(userInfoDto.getUsername());
     }
 
-    public Boolean signupUser(UserInfoDto userInfoDto){
+    public String signupUser(UserInfoDto userInfoDto){
         //        ValidationUtil.validateUserAttributes(userInfoDto);
         userInfoDto.setPassword(passwordEncoder.encode(userInfoDto.getPassword()));
         if(Objects.nonNull(checkIfUserAlreadyExist(userInfoDto))){
-            return false;
+            return null;
         }
         String userId = UUID.randomUUID().toString();
-        userRepository.save(new UserInfo(userId, userInfoDto.getUsername(), userInfoDto.getPassword(), new HashSet<>()));
+        UserInfo userInfo = new UserInfo(userId, userInfoDto.getUsername(), userInfoDto.getPassword(), new HashSet<>());
+        userRepository.save(userInfo);
         // pushEventToQueue
         userInfoProducer.sendEventToKafka(userInfoEventToPublish(userInfoDto, userId));
-
-        return true;
+        return userId;
     }
-        public String getUserByUsername(String userName){
+
+    public String getUserByUsername(String userName){
         return Optional.of(userRepository.findByUsername(userName)).map(UserInfo::getUserId).orElse(null);
     }
 
