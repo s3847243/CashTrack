@@ -6,10 +6,12 @@ import org.springframework.context.annotation.Configuration;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
-public class UserServiceConfig {
+public class UserServiceConfig
+{
+
     @Bean
     public ObjectMapper objectMapperInit(){
         return new ObjectMapper();
-
     }
+
 }

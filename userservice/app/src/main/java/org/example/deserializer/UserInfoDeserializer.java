@@ -6,7 +6,8 @@ import org.example.entities.UserInfoDto;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class UserInfoDeserializer implements Deserializer<UserInfoDto> {
+public class UserInfoDeserializer implements Deserializer<UserInfoDto>
+{
     @Override public void close() {
     }
     @Override public void configure(Map<String, ?> arg0, boolean arg1) {
