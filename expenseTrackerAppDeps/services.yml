@@ -31,8 +31,8 @@ services:
     environment:
       MYSQL_USER: test
       MYSQL_ROOT_USER: root
-      MYSQL_PASSWORD: 'password'
-      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_PASSWORD: 'Hamraan@2011'
+      MYSQL_ROOT_PASSWORD: 'Hamraan@2011'
     ports:
       - '3306:3306'
     expose:
