@@ -1,5 +1,5 @@
 {
-  "app": "npx ts-node --prefer-ts-exts bin/expense_tracker-aws_cdk.ts",
+  "app": "npx ts-node --prefer-ts-exts bin/expense_tracker_services_deploy.ts",
   "watch": {
     "include": [
       "**"

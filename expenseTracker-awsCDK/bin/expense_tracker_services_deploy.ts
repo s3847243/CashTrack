@@ -2,9 +2,8 @@
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { ExpenseTrackerServicesDeployStack } from '../lib/expense_tracker_services_deploy-stack';
-import { ExpenseTrackerServices } from '../lib/expense_services-stack';
 import { ExpenseBackendServices } from '../lib/expense_backend_services-stack';
-
+import { ExpenseTrackerServices } from '../lib/expense_services-stack';
 const app = new cdk.App();
 
 // Define the AWS environment
@@ -26,3 +25,5 @@ const mysqlAndKafkaStack = new ExpenseTrackerServices(app, 'ExpenseTrackerServic
 const backendServices = new ExpenseBackendServices(app, 'ExpenseBackendServices', {
   env // Expense tracker backend services
 })
+
+backendServices.addDependency(mysqlAndKafkaStack);
