@@ -57,20 +57,20 @@ export class ExpenseBackendServices extends cdk.Stack {
         );
 
         const authServiceImage = new assets.DockerImageAsset(this, 'AuthServiceImage', {
-            directory: path.join(__dirname, '..', '..', 'backend_services', 'authservice'),
+            directory: path.join(__dirname, '..', '..', '', 'AuthService1'),
         });
 
         const userServiceImage = new assets.DockerImageAsset(this, 'userServiceImage', {
-            directory: path.join(__dirname, '..', '..', 'backend_services', 'userservice'),
+            directory: path.join(__dirname, '..', '..',  'userservice'),
         });
 
         const expenseServiceImage = new assets.DockerImageAsset(this, 'expenseServiceImage', {
-            directory: path.join(__dirname, '..', '..', 'backend_services', 'expenseservice') 
+            directory: path.join(__dirname, '..', '..', 'expenseService') 
         });
 
         const dsServiceImage = new assets.DockerImageAsset(this, 'dsServiceImage', {
-            directory: path.join(__dirname, '..', '..', 'backend_services', 'dsService'), 
-            platform: assets.Platform.LINUX_AMD64,  // Add this line
+            directory: path.join(__dirname, '..', '..', 'dsService'), 
+            platform: assets.Platform.LINUX_AMD64, 
             buildArgs: {
             BUILDKIT_INLINE_CACHE: "1"
             },
