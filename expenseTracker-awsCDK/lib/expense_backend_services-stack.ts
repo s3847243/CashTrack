@@ -196,7 +196,7 @@ export class ExpenseBackendServices extends cdk.Stack {
             environment: {
                 KAFKA_HOST: nlbDnsName,
                 KAFKA_PORT: '9092',
-                OPENAI_API_KEY: 'VKtb8V8Jjj974P1K4RS2vNAvcMaNo6xR'
+                OPENAI_API_KEY: process.env.OPEN_AI_KEY || ''
             },
             portMappings: [{containerPort: 8010}]
         });
